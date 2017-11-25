@@ -27,8 +27,10 @@
     <script type="text/babel">
 
     //Friendly
-    function FriendLy(){
+    function FriendLy(props){
         var friendlyStyle={
+            display: "inline-block",
+            margin: 20,
             height:300,
             width:200,
             padding:0,
@@ -37,8 +39,8 @@
         }
         return(
             <div style={friendlyStyle}>
-            <Avatar/>
-            <UserName/>
+            <Avatar url={props.url}/>
+            <UserName username={props.username}/>
             <GetConnected/>
             </div>
         )
@@ -46,9 +48,9 @@
 
     //Avatar Component
 
-    function Avatar(){
+    function Avatar(props){
         var style={
-            marginLeft:20,
+            marginLeft:27,
             marginTop:20,
             width:150,
             height:150,
@@ -56,28 +58,32 @@
             borderRadius: "50%"
         }
         return(
-            <img src="images/ct.jpg" alt="profile picture" style={style}/>
+            <img src={props.url} alt="profile picture" style={style}/>
         )
     }
 
     //Username Component
 
-    function UserName(){
+    function UserName(props){
         var nameStyle={
             fontSize:24,
             fontFamily: "Arial,Helvetica, sans-serif",
-            margin:20
+            margin:20,
+            textAlign:"center"
         }
         return(
-            <h1 style={nameStyle}>Profile Name</h1>
+            <h1 style={nameStyle}>{props.username}</h1>
         )
     }
 
     //GetConnected Component
 
     function GetConnected(){
+        var getConnectedStyle={
+            marginLeft:15
+        }
         return(
-            <div>
+            <div style={getConnectedStyle}>
             <Like/>
             <Share/>
             <Add/>
@@ -117,9 +123,23 @@
 
     ReactDOM.render(
     //REACT WHAT - JSX
- 
-    <FriendLy/>,
-
+ <div>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+    <FriendLy username="Rob" url="images/ct.jpg"/>
+</div>,
     //REACT WHERE - DIV WITH ID "APP"
     document.getElementById("app")
 );
@@ -130,32 +150,3 @@
 </body>
 
 </html>
-
-
-
-
-<!-- var Green=function(){
-    var greenStyle={
-        height:50,
-        width:150,
-        backgroundColor: "green"
-    }
-    return(
-        <h1 style={greenStyle}>Green</h1>
-    )
-}
-
-
-class Circle extends React.Component{
-    render(){
-        var circleStyle={
-            width: 100,
-            height: 100,
-            backgroundColor: "red",
-            borderRadius:"50%"
-        }
-        return(
-            <h1 style={circleStyle}>Circle</h1>
-        )
-    }
-} -->
