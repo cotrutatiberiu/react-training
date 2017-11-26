@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">React has not rendered yet</div>
+
+    <script type="text/babel">
+
+        //3 form event onSubmit onChange onInput
+    class NameForm extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                value: "" /*xx*/
+            }
+            this.handleChange=this.handleChange.bind(this);
+            this.handleSubmit=this.handleSubmit.bind(this);
+        }
+        handleChange(event){/*a*/
+            this.setState({
+                value:event.target.value /*a,the target event property returns the element that 
+                triggers the event and retrieves value*/
+            })
+        }
+        //porneste cand formul este submited *x3*
+        handleSubmit(event){
+            alert("A name was submitted: " + this.state.value);
+            //previne reincarcarea paginii
+            event.preventDefault();
+        }
+        render(){
+            return(
+                //submit de la input type submit *x2*
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Name:
+                        
+                        <input type="text" value={this.state.value} /*xx*/ onChange={this.handleChange}/>
+                        
+                    </label>
+                        <input type="submit" value="submit" /*x1*//>   
+                    <h2>{this.state.value}</h2>
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(
+
+        <NameForm/>,
+
+    document.getElementById("app")
+    );
+                
+    </script>
+
+</body>
+
+</html>
