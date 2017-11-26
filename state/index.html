@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- REACT LIBRARY -->
+    <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">React has not rendered yet</div>
+
+    <script type="text/babel">
+
+    class GuessAge extends React.Component{
+        //Cand este creat un obiect,constructor este chemat
+        constructor(props){
+            //trebuie super mereu cand fac o functie constructor
+            //daca vreau sa accesez sau sa setez a proprietate intr un constructor este nevoie de super()
+            super(props);
+            this.state={
+                age:"Guess my age"
+            };
+            this.onButtonClick=this.onButtonClick.bind(this);
+        }
+
+        onButtonClick(){
+            this.setState({
+                age:"37"
+            })
+        }
+
+        render(){
+            return(
+                <div>
+                    <div>Guessing Game</div>
+                    <h2>{this.state.age}</h2>
+                    <button onClick={this.onButtonClick}>reveal my age</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+
+    <GuessAge/>,
+
+    document.getElementById("app")
+    );
+                
+    </script>
+
+</body>
+
+</html>
