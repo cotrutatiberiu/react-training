@@ -23,9 +23,25 @@
 
         class FamilyList extends React.Component{
             render(){
+
+                var siblings=this.props.siblings;
+                var listStuff=siblings.filter(function(person){
+                    return person.female;
+                }).map(function(person){
+                    return <div key={person.id}>{person.name}</div>
+                })
                 return(
-                    
+                    <div>{listStuff}</div>
                 )
+
+                //Alternative
+                // return(
+                //     <div>{siblings.filter(function(person){
+                //         return person.female;
+                //     }).map(function(person){
+                //         return <div key={person.id}>{person.name}</div>
+                //     })}</div>
+                // )
             }
         }
 
